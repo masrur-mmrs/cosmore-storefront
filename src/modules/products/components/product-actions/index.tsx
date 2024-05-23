@@ -166,7 +166,7 @@ export default function ProductActions({
           onClick={handleAddToCart}
           disabled={!inStock || !variant || !!disabled || isAdding}
           variant="transparent"
-          className="w-full h-10 bg-primary-color hover:bg-rose-50"
+          className="w-full h-10 bg-primary-color hover:bg-[#fddcae]"
           isLoading={isAdding}
           data-testid="add-product-button"
         >

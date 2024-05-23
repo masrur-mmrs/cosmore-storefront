@@ -17,6 +17,10 @@
     scrollbar-width: none; /* Firefox */
   }
 
+  body{
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+  }
+
   input:focus ~ label,
   input:not(:placeholder-shown) ~ label {
     @apply -translate-y-2 text-xsmall-regular;
@@ -35,8 +39,8 @@
   select:-webkit-autofill,
   select:-webkit-autofill:hover,
   select:-webkit-autofill:focus {
-    border: 1px solid #212121;
-    -webkit-text-fill-color: #212121;
+    border: 1px solid #00000000;
+    -webkit-text-fill-color: #00000000;
     -webkit-box-shadow: 0 0 0px 1000px #fff inset;
     transition: background-color 5000s ease-in-out 0s;
   }
@@ -46,6 +50,11 @@
   input[type="search"]::-webkit-search-results-button,
   input[type="search"]::-webkit-search-results-decoration {
     -webkit-appearance: none;
+  }
+
+  button{
+    outline: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
   }
 }
 
@@ -113,8 +122,7 @@
 
 :root {
   --primary-color: #feefdf;
-  --secondary-color: #4C3733;
-  --tertiary-color: #C2B3A3;
+  --secondary-color: #fddcae;
 }
 
 
@@ -126,9 +134,6 @@
   background-color: var(--secondary-color);
 }
 
-.bg-tertiary-color {
-  background-color: var(--tertiary-color);
-}
 
 .scroll {
   height: 100vh;
@@ -157,5 +162,52 @@
   50% {
     transform: translateY(-50%);
   }
+}
+
+.ticker-view {
+  height: auto;
+  margin: auto;
+  display: flex;
+  flex-direction: row-reverse;
+  overflow: hidden;
+  position: relative;
+}
+
+.number-placeholder {
+  visibility: hidden;
+}
+
+.ticker-column-container {
+  position: relative;
+}
+
+.ticker-column {
+  position: absolute;
+  height: 1000%;
+  bottom: 0;
+  font-feature-settings: "tnum";
+}
+
+.ticker-digit {
+  width: auto;
+  height: 10%;
+}
+
+.ticker-column.increase {
+  animation: pulseIncrement 500ms cubic-bezier(0.4, 0, 0.6, 1) 1;
+}
+
+.ticker-column.decrease {
+  animation: pulseDecrement 500ms cubic-bezier(0.4, 0, 0.6, 1) 1;
+}
+
+@keyframes pulseIncrement {
+  0%, 100% { color: inherit; }
+  50% { color: var(--increment-color); }
+}
+
+@keyframes pulseDecrement {
+  0%, 100% { color: inherit; }
+  50% { color: var(--decrement-color); }
 }
 

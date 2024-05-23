@@ -13,6 +13,14 @@ import LineItemOptions from "@modules/common/components/line-item-options"
 import LineItemPrice from "@modules/common/components/line-item-price"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import Thumbnail from "@modules/products/components/thumbnail"
+// import { AnimatedCounter } from "@modules/common/components/AnimatedCounter"
+import { AnimatedCounter } from "react-animated-counter"
+
+const containerStyles = {
+  fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Ubuntu, sans-serif',
+  marginRight: '5px',
+};
+
 
 const CartDropdown = ({
   cart: cartState,
@@ -73,17 +81,29 @@ const CartDropdown = ({
 
   return (
     <div
-      className="h-full z-50"
+      className="h-full z-50 drop-shadow-md"
       onMouseEnter={openAndCancel}
       onMouseLeave={close}
     >
       <Popover className="relative h-full">
-        <Popover.Button className="h-full">
+        <Popover.Button className="h-full outline-none">
           <LocalizedClientLink
             className="hover:text-ui-fg-base inline whitespace-nowrap"
             href="/cart"
             data-testid="nav-cart-link"
-          >{totalItems}<ShoppingCart/></LocalizedClientLink>
+          >
+            <AnimatedCounter 
+            value={totalItems} 
+            color="#636a74" 
+            includeDecimals={false}
+            incrementColor="#000000"
+            decrementColor="#000000"
+            fontSize="12px"
+            containerStyles={containerStyles}
+            />
+            {/* {totalItems} */}
+            <ShoppingCart/>
+          </LocalizedClientLink>
         </Popover.Button>
         <Transition
           show={cartDropdownOpen}
@@ -97,7 +117,7 @@ const CartDropdown = ({
         >
           <Popover.Panel
             static
-            className="hidden small:block absolute top-[calc(100%+1px)] right-0 bg-primary-color w-[420px] text-ui-fg-subtle rounded-xl"
+            className="hidden small:block absolute top-[calc(100%+1px)] right-0 bg-gray-50 w-[420px] text-ui-fg-subtle rounded-xl"
             data-testid="nav-cart-dropdown"
           >
             <div className="p-4 flex items-center justify-center">
@@ -125,7 +145,7 @@ const CartDropdown = ({
                         <div className="flex flex-col justify-between flex-1">
                           <div className="flex flex-col flex-1">
                             <div className="flex items-start justify-between">
-                              <div className="flex flex-col overflow-ellipsis whitespace-nowrap mr-4 w-[180px]">
+                              <div className="flex flex-col overflow-ellipsis whitespace-nowrap w-[180px]">
                                 <h3 className="text-base-regular overflow-hidden text-ellipsis">
                                   <LocalizedClientLink
                                     href={`/products/${item.variant.product.handle}`}
@@ -186,7 +206,8 @@ const CartDropdown = ({
                   </div>
                   <LocalizedClientLink href="/cart" passHref>
                     <Button
-                      className="w-full"
+                      variant={"secondary"}
+                      className="w-full bg-primary-color hover:bg-[#fddcae]"
                       size="large"
                       data-testid="go-to-cart-button"
                     >
@@ -198,7 +219,7 @@ const CartDropdown = ({
             ) : (
               <div>
                 <div className="flex py-16 flex-col gap-y-4 items-center justify-center">
-                  <div className="bg-ui-fg-subtle text-small-regular flex items-center justify-center w-6 h-6 rounded-full text-white">
+                  <div className="bg-primary-color text-small-regular flex items-center justify-center w-6 h-6 rounded-full text-black">
                     <span>0</span>
                   </div>
                   <span>Your shopping bag is empty.</span>
@@ -206,7 +227,7 @@ const CartDropdown = ({
                     <LocalizedClientLink href="/store">
                       <>
                         <span className="sr-only">Go to all products page</span>
-                        <Button onClick={close}>Explore products</Button>
+                        <Button variant={"secondary"} className="bg-primary-color hover:bg-[#fddcae]" onClick={close}>Explore products</Button>
                       </>
                     </LocalizedClientLink>
                   </div>
