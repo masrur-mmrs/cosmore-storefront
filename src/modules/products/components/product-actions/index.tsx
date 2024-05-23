@@ -165,8 +165,8 @@ export default function ProductActions({
         <Button
           onClick={handleAddToCart}
           disabled={!inStock || !variant || !!disabled || isAdding}
-          variant="primary"
-          className="w-full h-10"
+          variant="transparent"
+          className="w-full h-10 bg-primary-color hover:bg-rose-50"
           isLoading={isAdding}
           data-testid="add-product-button"
         >
