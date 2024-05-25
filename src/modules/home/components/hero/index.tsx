@@ -36,7 +36,7 @@ const Hero = () => {
         <div className="absolute inset-0 bg-white transform skew-x-12 origin-right"></div>
       </div>
       {/* Content Overlay */}
-      <div className="absolute inset-0 z-30 flex justify-center items-center">
+      <div className="absolute inset-0 z-30 flex justify-center items-center md:block min-[300px]:hidden">
         <div className="scroll"></div>
       </div>
     </div>
