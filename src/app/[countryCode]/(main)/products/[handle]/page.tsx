@@ -16,32 +16,40 @@ type Props = {
 }
 
 export async function generateStaticParams() {
-  const countryCodes = await listRegions().then((regions) =>
-    regions?.map((r) => r.countries.map((c) => c.iso_2)).flat()
-  )
+  try {
+    const regions = await listRegions();
+    if (!regions || regions.length === 0) {
+      return [];
+    }
 
-  if (!countryCodes) {
-    return null
-  }
+    const countryCodes = regions
+      .flatMap((region) => region.countries.map((country) => country.iso_2))
+      .filter((code) => code !== undefined && code !== null);
 
-  const products = await Promise.all(
-    countryCodes.map((countryCode) => {
-      return getProductsList({ countryCode })
-    })
-  ).then((responses) =>
-    responses.map(({ response }) => response.products).flat()
-  )
+    if (countryCodes.length === 0) {
+      return [];
+    }
 
-  const staticParams = countryCodes
-    ?.map((countryCode) =>
-      products.map((product) => ({
+    const allProducts = await Promise.all(
+      countryCodes.map((countryCode) => getProductsList({ countryCode }))
+    ).then((responses) =>
+      responses
+        .flatMap(({ response }) => response.products)
+        .filter((product) => product.handle !== undefined && product.handle !== null)
+    );
+
+    const staticParams = allProducts.flatMap((product) =>
+      countryCodes.map((countryCode) => ({
         countryCode,
         handle: product.handle,
       }))
-    )
-    .flat()
+    );
 
-  return staticParams
+    return staticParams;
+  } catch (error) {
+    console.error('Error generating static params:', error);
+    return [];
+  }
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
