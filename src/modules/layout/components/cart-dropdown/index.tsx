@@ -13,8 +13,7 @@ import LineItemOptions from "@modules/common/components/line-item-options"
 import LineItemPrice from "@modules/common/components/line-item-price"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import Thumbnail from "@modules/products/components/thumbnail"
-// import { AnimatedCounter } from "@modules/common/components/AnimatedCounter"
-import { AnimatedCounter } from "react-animated-counter"
+import { AnimatedCounter } from "@modules/common/components/AnimatedCounter"
 
 const containerStyles = {
   fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Ubuntu, sans-serif',
