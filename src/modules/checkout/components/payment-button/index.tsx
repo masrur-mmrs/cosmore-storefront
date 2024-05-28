@@ -73,6 +73,8 @@ const GiftCardPaymentButton = () => {
 
   return (
     <Button
+      variant="secondary"
+      className="bg-primary-color hover:bg-[#fddcae]"
       onClick={handleOrder}
       isLoading={submitting}
       data-testid="submit-order-button"
@@ -168,6 +170,8 @@ const StripePaymentButton = ({
   return (
     <>
       <Button
+        variant="secondary"
+        className="bg-primary-color hover:bg-[#fddcae]"
         disabled={disabled || notReady}
         onClick={handlePayment}
         size="large"
@@ -269,6 +273,8 @@ const ManualTestPaymentButton = ({ notReady }: { notReady: boolean }) => {
   return (
     <>
       <Button
+        variant="secondary"
+        className="bg-primary-color hover:bg-[#fddcae]"
         disabled={notReady}
         isLoading={submitting}
         onClick={handlePayment}

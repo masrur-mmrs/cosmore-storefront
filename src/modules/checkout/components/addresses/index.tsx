@@ -138,12 +138,12 @@ const Addresses = ({
                   </div>
 
                   <div className="flex flex-col w-1/3" data-testid="billing-address-summary">
-                    <Text className="txt-medium-plus text-ui-fg-base mb-1">
+                    <Text className="txt-medium-plus text-ui-fg-base mb-1 text-right">
                       Billing Address
                     </Text>
 
                     {sameAsSBilling ? (
-                      <Text className="txt-medium text-ui-fg-subtle">
+                      <Text className="txt-medium text-ui-fg-subtle text-right">
                         Billing- and delivery address are the same.
                       </Text>
                     ) : (

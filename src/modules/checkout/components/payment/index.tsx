@@ -201,7 +201,8 @@ const Payment = ({
 
           <Button
             size="large"
-            className="mt-6"
+            variant="secondary"
+            className="mt-6 bg-primary-color hover:bg-[#fddcae]"
             onClick={handleSubmit}
             isLoading={isLoading}
             disabled={
