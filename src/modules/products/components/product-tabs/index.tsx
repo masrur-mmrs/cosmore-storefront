@@ -7,6 +7,7 @@ import FastDelivery from "@modules/common/icons/fast-delivery"
 import Refresh from "@modules/common/icons/refresh"
 
 import Accordion from "./accordion"
+import Chart from "./chart"
 
 type ProductTabsProps = {
   product: PricedProduct
@@ -43,35 +44,39 @@ const ProductTabs = ({ product }: ProductTabsProps) => {
 }
 
 const ProductInfoTab = ({ product }: ProductTabsProps) => {
+  
   return (
     <div className="text-small-regular py-8">
       <div className="grid grid-cols-2 gap-x-8">
         <div className="flex flex-col gap-y-4">
           <div>
-            <span className="font-semibold">Material</span>
-            <p>{product.material ? product.material : "-"}</p>
+            {(product.productDetails)?<Chart chartArray={product.productDetails["chartArray"]} />:<></>}
+          </div>
+          {<div>
+            {(product.material)?<><span className="font-semibold">Material</span>
+            <p>{product.material ? product.material : "-"}</p></>:<></>}
+          </div>}
+          <div>
+            {(product.origin_country)?<><span className="font-semibold">Country of origin</span>
+            <p>{product.origin_country ? product.origin_country : "-"}</p></>:<></>}
           </div>
           <div>
-            <span className="font-semibold">Country of origin</span>
-            <p>{product.origin_country ? product.origin_country : "-"}</p>
-          </div>
-          <div>
-            <span className="font-semibold">Type</span>
-            <p>{product.type ? product.type.value : "-"}</p>
+            {(product.type)?<><span className="font-semibold">Type</span>
+            <p>{product.type ? product.type.value : "-"}</p></>:<></>}
           </div>
         </div>
         <div className="flex flex-col gap-y-4">
           <div>
-            <span className="font-semibold">Weight</span>
-            <p>{product.weight ? `${product.weight} g` : "-"}</p>
+            {(product.weight)?<><span className="font-semibold">Weight</span>
+            <p>{product.weight ? `${product.weight} g` : "-"}</p></>:<></>}
           </div>
           <div>
-            <span className="font-semibold">Dimensions</span>
+            {(product.length && product.width && product.height)?<><span className="font-semibold">Dimensions</span>
             <p>
               {product.length && product.width && product.height
                 ? `${product.length}L x ${product.width}W x ${product.height}H`
                 : "-"}
-            </p>
+            </p></>:<></>}
           </div>
         </div>
       </div>
