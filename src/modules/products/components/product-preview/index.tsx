@@ -40,12 +40,12 @@ export default async function ProductPreview({
       <div data-testid="product-wrapper" className="hover:-translate-y-3 transition ease-in-out duration-300">
         <Thumbnail
           thumbnail={productPreview.thumbnail}
-          size="square"
+          size="full"
           isFeatured={isFeatured}
         />
-        <div className="flex txt-compact-medium mt-4 justify-between">
-          <Text className="text-ui-fg-subtle" data-testid="product-title">{productPreview.title}</Text>
-          <div className="flex items-center gap-x-2">
+        <div className="flex txt-compact-medium justify-between rounded-b-lg py-3 bg-1  bg-primary-color">
+          <Text className="text-ui-fg-subtle ml-1 font-bold" data-testid="product-title">{productPreview.title}</Text>
+          <div className="flex items-center gap-x-2 mr-1">
             {cheapestPrice && <PreviewPrice price={cheapestPrice} />}
           </div>
         </div>

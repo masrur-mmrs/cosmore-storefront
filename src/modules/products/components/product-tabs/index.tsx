@@ -8,6 +8,7 @@ import Refresh from "@modules/common/icons/refresh"
 
 import Accordion from "./accordion"
 import Chart from "./chart"
+import { useEffect, useState } from "react"
 
 type ProductTabsProps = {
   product: PricedProduct
@@ -44,18 +45,30 @@ const ProductTabs = ({ product }: ProductTabsProps) => {
 }
 
 const ProductInfoTab = ({ product }: ProductTabsProps) => {
+  const [chartArray, setChartArray] = useState<string[][]>([]);
+
+  useEffect(() => {
+    if (Object.keys(product.productDetails).length > 0) {
+      setChartArray(product.productDetails["chartArray"]);
+    }
+    console.log(chartArray);
+    return () => {
+      
+    };
+  }, [chartArray, product.productDetails]);
   
   return (
     <div className="text-small-regular py-8">
       <div className="grid grid-cols-2 gap-x-8">
         <div className="flex flex-col gap-y-4">
+        {(Object.keys(product.productDetails).length>0)&&<div>
+            <span className="font-semibold">Size Chart</span>
+            <Chart chartArray={chartArray} />
+          </div>}
           <div>
-            {(product.productDetails)?<Chart chartArray={product.productDetails["chartArray"]} />:<></>}
-          </div>
-          {<div>
             {(product.material)?<><span className="font-semibold">Material</span>
             <p>{product.material ? product.material : "-"}</p></>:<></>}
-          </div>}
+          </div>
           <div>
             {(product.origin_country)?<><span className="font-semibold">Country of origin</span>
             <p>{product.origin_country ? product.origin_country : "-"}</p></>:<></>}

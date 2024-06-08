@@ -6,7 +6,7 @@ interface ChartProps {
 
 const Chart: React.FC<ChartProps> = ({chartArray}: ChartProps) => {
     return (
-        <table className="table-auto border-separate border-spacing-0 border border-ui-border-strong rounded-md">
+        <table className="table-auto border-separate border-spacing-0 border border-ui-border-strong rounded-md mt-1">
             <tbody>
             {chartArray.map((row, rowIndex) => (
                 <tr key={rowIndex}>
