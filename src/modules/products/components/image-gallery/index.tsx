@@ -1,37 +1,50 @@
+"use client"
 import { Image as MedusaImage } from "@medusajs/medusa"
-import { Container } from "@medusajs/ui"
+import { Button } from "@medusajs/ui"
+import { ArrowLeft, ArrrowRight } from "@medusajs/icons"
 import Image from "next/image"
+import { useState } from "react"
 
 type ImageGalleryProps = {
   images: MedusaImage[]
 }
 
-const ImageGallery = ({ images }: ImageGalleryProps) => {
+const ImageGallery: React.FC<ImageGalleryProps> = ({ images }) => {
+  const [currentIndex, setCurrentIndex] = useState(0)
+
+  const handlePrevClick = () => {
+    setCurrentIndex((prevIndex) => (prevIndex === 0 ? images.length - 1 : prevIndex - 1))
+  }
+
+  const handleNextClick = () => {
+    setCurrentIndex((prevIndex) => (prevIndex === images.length - 1 ? 0 : prevIndex + 1))
+  }
+
   return (
-    <div className="flex items-start relative">
-      <div className="flex flex-col flex-1 small:mx-16 gap-y-4">
-        {images.map((image, index) => {
-          return (
-            <Container
-              key={image.id}
-              className="relative aspect-[29/34] w-full overflow-hidden bg-ui-bg-subtle"
-              id={image.id}
-            >
-              <Image
-                src={image.url}
-                priority={index <= 2 ? true : false}
-                className="absolute inset-0 rounded-rounded"
-                alt={`Product image ${index + 1}`}
-                fill
-                sizes="(max-width: 576px) 280px, (max-width: 768px) 360px, (max-width: 992px) 480px, 800px"
-                style={{
-                  objectFit: "cover",
-                }}
-              />
-            </Container>
-          )
-        })}
+    <div className="h-80 relative md:py-[45vh]">
+      <Button
+        onClick={handlePrevClick}
+        variant="secondary"
+        className="absolute top-1/2 left-2 transform -translate-y-1/2 rounded-full p-2 !outline-none !focus:outline-none !focus:ring-0"
+      >
+        <ArrowLeft />
+      </Button>
+      <div className="h-full flex items-center justify-center">
+        <Image
+          src={images[currentIndex].url}
+          alt={`Slide ${currentIndex + 1}`}
+          width={640}
+          height={480}
+          className="object-contain rounded-md"
+        />
       </div>
+      <Button
+        onClick={handleNextClick}
+        variant="secondary"
+        className="absolute top-1/2 right-2 transform -translate-y-1/2 rounded-full p-2 outline-none"
+      >
+        <ArrrowRight />
+      </Button>
     </div>
   )
 }

@@ -27,7 +27,7 @@ export default async function CheckoutForm() {
     return null
   }
 
-  cart.checkout_step = cart && getCheckoutStep(cart)
+  cart.checkout_step = cart && getCheckoutStep(cart) || "address"
 
   // get available shipping methods
   const availableShippingMethods = await listCartShippingMethods(cart.id).then(

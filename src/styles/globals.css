@@ -4,6 +4,10 @@
 
 @layer utilities {
   /* Chrome, Safari and Opera */
+  *:focus{
+    outline: none !important;
+    box-shadow: none !important;
+  }
   .no-scrollbar::-webkit-scrollbar {
     display: none;
   }
