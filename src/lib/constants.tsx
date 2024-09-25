@@ -1,5 +1,6 @@
 import React from "react"
 import { CreditCard } from "@medusajs/icons"
+import BkashIcon from "lib/icons/BkashIcon"
 
 import Ideal from "@modules/common/icons/ideal"
 import Bancontact from "@modules/common/icons/bancontact"
@@ -27,8 +28,8 @@ export const paymentInfoMap: Record<
     icon: <PayPal />,
   },
   manual: {
-    title: "Test payment",
-    icon: <CreditCard />,
+    title: "Bkash Payment",
+    icon: <BkashIcon />,
   },
   // Add more payment providers here
 }

@@ -104,8 +104,8 @@ const Addresses = ({
             {cart && cart.shipping_address ? (
               <div className="flex items-start gap-x-8">
                 <div className="flex items-start gap-x-1 w-full">
-                  <div className="flex flex-col w-1/3" data-testid="shipping-address-summary">
-                    <Text className="txt-medium-plus text-ui-fg-base mb-1">
+                  <div className="flex flex-col w-1/4" data-testid="shipping-address-summary">
+                    <Text className="font-semibold text-ui-fg-base mb-1">
                       Shipping Address
                     </Text>
                     <Text className="txt-medium text-ui-fg-subtle">
@@ -125,10 +125,11 @@ const Addresses = ({
                     </Text>
                   </div>
 
-                  <div className="flex flex-col w-1/3 " data-testid="shipping-contact-summary">
-                    <Text className="txt-medium-plus text-ui-fg-base mb-1">
+                  <div className="flex flex-col w-1/3s" data-testid="shipping-contact-summary">
+                    <Text className="font-semibold text-ui-fg-base mb-1 text-center sm:text-left">
                       Contact
                     </Text>
+                    <div className="h-4 sm:h-0"></div>
                     <Text className="txt-medium text-ui-fg-subtle">
                       {cart.shipping_address.phone}
                     </Text>
@@ -137,14 +138,14 @@ const Addresses = ({
                     </Text>
                   </div>
 
-                  <div className="flex flex-col w-1/3" data-testid="billing-address-summary">
-                    <Text className="txt-medium-plus text-ui-fg-base mb-1 text-right">
+                  <div className="flex flex-col w-1/4" data-testid="billing-address-summary">
+                    <Text className="font-semibold text-ui-fg-base mb-1 text-right">
                       Billing Address
                     </Text>
 
                     {sameAsSBilling ? (
                       <Text className="txt-medium text-ui-fg-subtle text-right">
-                        Billing- and delivery address are the same.
+                        Billing and delivery address are the same.
                       </Text>
                     ) : (
                       <>

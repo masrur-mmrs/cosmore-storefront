@@ -80,7 +80,7 @@ const CartDropdown = ({
 
   return (
     <div
-      className="h-full z-50 drop-shadow-md"
+      className="h-full z-50 drop-shadow-md overflow-hidden sm:overflow-visible"
       onMouseEnter={openAndCancel}
       onMouseLeave={close}
     >

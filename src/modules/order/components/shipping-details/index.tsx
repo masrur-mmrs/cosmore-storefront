@@ -16,7 +16,7 @@ const ShippingDetails = ({ order }: ShippingDetailsProps) => {
       </Heading>
       <div className="flex items-start gap-x-8">
         <div className="flex flex-col w-1/3" data-testid="shipping-address-summary">
-          <Text className="txt-medium-plus text-ui-fg-base mb-1">
+          <Text className="font-semibold text-ui-fg-base mb-1">
             Shipping Address
           </Text>
           <Text className="txt-medium text-ui-fg-subtle">
@@ -36,7 +36,7 @@ const ShippingDetails = ({ order }: ShippingDetailsProps) => {
         </div>
 
         <div className="flex flex-col w-1/3 " data-testid="shipping-contact-summary">
-          <Text className="txt-medium-plus text-ui-fg-base mb-1">Contact</Text>
+          <Text className="font-semibold text-ui-fg-base mb-1 text-center sm:text-left">Contact</Text>
           <Text className="txt-medium text-ui-fg-subtle">
             {order.shipping_address.phone}
           </Text>
@@ -44,8 +44,8 @@ const ShippingDetails = ({ order }: ShippingDetailsProps) => {
         </div>
 
         <div className="flex flex-col w-1/3" data-testid="shipping-method-summary">
-          <Text className="txt-medium-plus text-ui-fg-base mb-1">Method</Text>
-          <Text className="txt-medium text-ui-fg-subtle">
+          <Text className="font-semibold text-ui-fg-base mb-1 text-right">Method</Text>
+          <Text className="txt-medium text-ui-fg-subtle text-right">
             {order.shipping_methods[0].shipping_option?.name} (
             {formatAmount({
               amount: order.shipping_methods[0].price,
@@ -53,7 +53,7 @@ const ShippingDetails = ({ order }: ShippingDetailsProps) => {
               includeTaxes: false,
             })
               .replace(/,/g, "")
-              .replace(/\./g, ",")}
+              .replace(/\./g, ".")}
             )
           </Text>
         </div>

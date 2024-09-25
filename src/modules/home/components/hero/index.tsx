@@ -1,26 +1,32 @@
 "use client"
 import Image from "next/image"
-import CosmoreImage from "../../../../app/cosmore.jpg"
+import Cosmore from "../../../../app/cosmore.json"
 import HeroImage from "../../../../app/HeroImage.png"
 import { useEffect, useState } from "react"
 import { clx } from "@medusajs/ui"
-
+import DownArrow from "../../../../app/arrow-down-3101.png"
+import Lottie from "lottie-react"
+import { Transition } from "@headlessui/react"
 
 const Hero = () => {
   const [visible, setVisible] = useState(false);
+  const [showDownArrow, setShowDownArrow] = useState<boolean>(false);
 
   useEffect(() => {
     setVisible(true);
   }, []);
 
+  setTimeout(() => {
+    setShowDownArrow(true);
+  }, 3500);
+
   return (
     <div className="lg:h-[100vh] w-full relative flex flex-col overflow-hidden sm:flex-row">
       {/* Left Div */}
         <div className="lg:w-1/2 sm:w-full bg-primary-color relative items-center justify-center">
-          <Image
-          src={CosmoreImage}
-          alt="Cosmore Logo"
-          priority
+          <Lottie
+          animationData={Cosmore}
+          loop={false}
           />
         </div>
       {/* Right Div */}
@@ -36,8 +42,23 @@ const Hero = () => {
         <div className="absolute inset-0 bg-white transform skew-x-12 origin-right"></div>
       </div>
       {/* Content Overlay */}
-      <div className="absolute inset-0 z-30 flex justify-center items-center md:block min-[300px]:hidden">
-        <div className="scroll"></div>
+        <div className="absolute w-full inset-0 z-30 md:block min-[300px]:hidden">
+        <div className="!origin-center absolute top-[70%] left-1/2 -translate-x-1/2">
+          <Transition
+          show={showDownArrow}
+          enter="transition-opacity ease-in duration-300 transform-gpu"
+          enterFrom="opacity-0"
+          enterTo="opacity-100"
+          >
+            <Image
+              src={DownArrow}
+              alt="Arrow"
+              width={100}
+              height={100}
+              className="animate-bounce"
+            />
+          </Transition>
+        </div>
       </div>
     </div>
   )

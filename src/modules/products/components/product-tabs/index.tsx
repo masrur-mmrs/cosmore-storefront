@@ -48,7 +48,7 @@ const ProductInfoTab = ({ product }: ProductTabsProps) => {
   const [chartArray, setChartArray] = useState<string[][]>([]);
 
   useEffect(() => {
-    if (Object.keys(product.productDetails).length > 0) {
+    if (Object.keys(product.productDetails!).length > 0) {
       setChartArray(product.productDetails["chartArray"]);
     }
     console.log(chartArray);
