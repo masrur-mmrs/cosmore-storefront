@@ -44,7 +44,7 @@ const ProductInfo = ({ product }: ProductInfoProps) => {
         </Text>
         <div className="flex flex-col text-sm gap-y-4">
         {/* Object.keys(product.productDetails!).length>0 */}
-        {(product.productDetails !== undefined )&&<div>
+        {(product.productDetails !== undefined  && Object.keys(product.productDetails!).length>0)&&<div>
             <span className="font-semibold">Size Chart</span>
             <Chart chartArray={chartArray} />
           </div>}
