@@ -983,10 +983,10 @@
   resolved "https://registry.npmjs.org/@medusajs/types/-/types-1.11.7.tgz"
   integrity sha512-KkNJd4pxu5zoiv09nsG2ARtrC17LxsDD941uX35IMfvNeWYRk31kQ59EipYE59SBvGpvatoaBHzTxSAsrebzTQ==
 
-"@medusajs/ui-preset@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.npmjs.org/@medusajs/ui-preset/-/ui-preset-1.0.2.tgz"
-  integrity sha512-Z+VUZ/VbRAkAvXT4NAMO/saSouqa5BCr/SFkw/a/LdNkl3FY70nQZQ1B1fpY2BuaunmmzCON92tcjxGMXhJEHg==
+"@medusajs/ui-preset@^1.1.4":
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/@medusajs/ui-preset/-/ui-preset-1.1.4.tgz#ab3592f64184c18284e92e0e0170d5f21ae856a6"
+  integrity sha512-/09W6jLyWu24K7kvVpMwhp0K7iQ+Y8j5D2+ZL7vdX1d1/leDBQ3jQP2mZLWmcJIPlqBxvUVkiqWPUz8w05aZ9g==
   dependencies:
     "@tailwindcss/forms" "^0.5.3"
     tailwindcss-animate "^1.0.6"

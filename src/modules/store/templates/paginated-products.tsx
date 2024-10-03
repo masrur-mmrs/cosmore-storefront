@@ -1,4 +1,6 @@
+import React from "react"
 import { getProductsListWithSort, getRegion } from "@lib/data"
+import ProductPreviewWrapper from "@modules/common/components/product-preview-wrapper"
 import ProductPreview from "@modules/products/components/product-preview"
 import { Pagination } from "@modules/store/components/pagination"
 import { SortOptions } from "@modules/store/components/refinement-list/sort-products"
@@ -28,7 +30,6 @@ export default async function PaginatedProducts({
   countryCode: string
 }) {
   const region = await getRegion(countryCode)
-
   if (!region) {
     return null
   }
@@ -40,11 +41,9 @@ export default async function PaginatedProducts({
   if (collectionId) {
     queryParams["collection_id"] = [collectionId]
   }
-
   if (categoryId) {
     queryParams["category_id"] = [categoryId]
   }
-
   if (productsIds) {
     queryParams["id"] = productsIds
   }
@@ -62,15 +61,16 @@ export default async function PaginatedProducts({
 
   return (
     <>
-      <ul className="grid grid-cols-2 w-full small:grid-cols-3 medium:grid-cols-4 gap-x-6 gap-y-8" data-testid="products-list">
-        {products.map((p) => {
-          return (
-            <li key={p.id}>
-              <ProductPreview productPreview={p} region={region} />
-            </li>
-          )
-        })}
-      </ul>
+        <ul className="grid grid-cols-2 w-full small:grid-cols-3 medium:grid-cols-4 gap-x-6 gap-y-8 transition-all transform-gpu">
+          {products.map((p, index) => (
+            <ProductPreviewWrapper key={p.id} index={index}>
+              <li key={p.id}>
+                <ProductPreview productPreview={p} region={region} />
+              </li>
+            </ProductPreviewWrapper>
+          ))}
+        </ul>
+
       {totalPages > 1 && <Pagination data-testid="product-pagination" page={page} totalPages={totalPages} />}
     </>
   )

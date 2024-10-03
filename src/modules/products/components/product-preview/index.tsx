@@ -24,14 +24,10 @@ export default async function ProductPreview({
     regionId: region.id,
   }).then((product) => product)
   
-
   if (!pricedProduct) {
     return null
   }
-
-
   
-
   const { cheapestPrice } = getProductPrice({
     product: pricedProduct,
     region,

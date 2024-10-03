@@ -2,7 +2,6 @@
 import React from 'react';
 import { useInView, motion } from "framer-motion"
 import { useRef } from "react"
-import { delay } from 'lodash';
 
 interface ProductPreviewWrapperProps {
     children: React.ReactNode;
@@ -19,8 +18,8 @@ const ProductPreviewWrapper: React.FC<ProductPreviewWrapperProps> = ({children, 
       opacity: 1,
       y: 0,
       transition: {
-        ease: 'easeOut',
-        duration: 0.3,
+        ease: 'easeIn',
+        duration: 0.25,
         delay: index*0.1,
       },
     },
