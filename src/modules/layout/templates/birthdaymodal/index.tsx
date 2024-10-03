@@ -4,8 +4,8 @@ import { Transition } from '@headlessui/react';
 import Image from 'next/image';
 import { Button, Modal } from "flowbite-react"
 import Lottie from 'lottie-react';
-const BirthdayAnimation = "https://cosmore-server.s3.ca-central-1.amazonaws.com/birthdayAnimation.json"
-const BirthdayImage = "https://cosmore-server.s3.ca-central-1.amazonaws.com/IMG_2616.png"
+import BirthdayAnimation from "../../../../app/birthdayAnimation.json"
+import BirthdayImage from "../../../../app/IMG_2616.png"
 
 interface FirstMessageProps {
   show: boolean
