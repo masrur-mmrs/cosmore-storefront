@@ -14,6 +14,11 @@ type ProductTabsProps = {
   product: PricedProduct
 }
 
+interface ProductDetails {
+  chartArray?: string[][];
+  // other properties...
+}
+
 const ProductTabs = ({ product }: ProductTabsProps) => {
   const tabs = [
     {
@@ -48,8 +53,8 @@ const ProductInfoTab = ({ product }: ProductTabsProps) => {
   const [chartArray, setChartArray] = useState<string[][]>([]);
 
   useEffect(() => {
-    if (Object.keys(product.productDetails!).length > 0) {
-      setChartArray(product.productDetails["chartArray"]);
+    if ( product.productDetails && Object.keys(product.productDetails!).length > 0 && "chartArray" in product.productDetails) {
+      setChartArray(product.productDetails["chartArray"] as string[][]);
     }
     console.log(chartArray);
     return () => {
@@ -61,7 +66,7 @@ const ProductInfoTab = ({ product }: ProductTabsProps) => {
     <div className="text-small-regular py-8">
       <div className="grid grid-cols-2 gap-x-8">
         <div className="flex flex-col gap-y-4">
-        {(Object.keys(product.productDetails).length>0)&&<div>
+        {(product.productDetails && Object.keys(product.productDetails).length>0)&&<div>
             <span className="font-semibold">Size Chart</span>
             <Chart chartArray={chartArray} />
           </div>}
