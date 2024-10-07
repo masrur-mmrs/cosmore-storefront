@@ -33,8 +33,10 @@ const Hero = () => {
       {/* Right Div */}
       <div className="lg:w-1/2 sm:w-0 relative">
       <Image
-        src={HeroImage}
+        src={"https://cosmore-server.s3.ca-central-1.amazonaws.com/HeroImage.PNG"}
         alt="Hero Image"
+        height={1000}
+        width={1000}
         priority
         className="absolute z-20 md:bottom-0 min-[300px]:-bottom-72"
         />
