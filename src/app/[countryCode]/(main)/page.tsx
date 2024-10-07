@@ -8,11 +8,23 @@ import Hero from "@modules/home/components/hero"
 import BirthdayModal from "@modules/layout/templates/birthdaymodal"
 import { ProductCollectionWithPreviews } from "types/global"
 import { cache } from "react"
+import { OpenGraph } from "next/dist/lib/metadata/types/opengraph-types"
+
+const openGraph: OpenGraph = {
+  type: "website",
+  title: "Cosmore Store",
+  url: "https://www.cosmore.store",
+  siteName: "Cosmore Store",
+  images: [{
+    url: "https://cosmore-server.s3.ca-central-1.amazonaws.com/cosmore.jpg",
+  }],
+}
 
 export const metadata: Metadata = {
   title: "Cosmore",
   description:
     "Welcome to Cosmore, where fashion meets sophistication. At Cosmore, we believe that clothing is more than just fabric; it's an expression of your unique personality and style. Our curated collection of high-quality apparel and accessories is designed to cater to the modern, fashion-forward individual who values both elegance and comfort.",
+    openGraph: openGraph,
 }
 
 const getCollectionsWithProducts = cache(
