@@ -1,13 +1,13 @@
 'use client'
 import React, { useContext, useEffect, useState } from 'react';
 import Image from 'next/image';
-import Cosmore from '../../../../app/cosmore.json';
 import { useDrag } from '@use-gesture/react';
 import { SwipeUpContext } from '../../../../lib/context/swipe-up-context';
 import { Transition } from '@headlessui/react';
 import { clx } from '@medusajs/ui';
 import Lottie from 'lottie-react';
-import DownArrow from '../../../../app/arrow-down-3101.png'
+const Cosmore = 'https://cosmore-server.s3.ca-central-1.amazonaws.com/cosmore.json';
+const DownArrow = 'https://cosmore-server.s3.ca-central-1.amazonaws.com/arrow-down-3101.png'
 
 const WelcomePage: React.FC = () => {
   const swipeUpContext = useContext(SwipeUpContext);

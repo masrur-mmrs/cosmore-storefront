@@ -1,13 +1,13 @@
 "use client"
 import Image from "next/image"
-import Cosmore from "../../../../app/cosmore.json"
-import HeroImage from "../../../../app/HeroImage.png"
 import { useEffect, useState } from "react"
 import { clx } from "@medusajs/ui"
 import DownArrow from "../../../../app/arrow-down-3101.png"
 import Lottie from "lottie-react"
 import { Transition } from "@headlessui/react"
 
+const Cosmore = "https://cosmore-server.s3.ca-central-1.amazonaws.com/cosmore.json"
+const HeroImage = "https://cosmore-server.s3.ca-central-1.amazonaws.com/HeroImage.PNG"
 const Hero = () => {
   const [visible, setVisible] = useState(false);
   const [showDownArrow, setShowDownArrow] = useState<boolean>(false);

@@ -4,6 +4,7 @@ import { PricedProduct } from "@medusajs/medusa/dist/types/pricing"
 import { getProductsList, getRegion } from "@lib/data"
 
 import ProductPreview from "../product-preview"
+import ProductPreviewWrapper from "@modules/common/components/product-preview-wrapper"
 
 type RelatedProductsProps = {
   product: PricedProduct
@@ -72,9 +73,11 @@ export default async function RelatedProducts({
       </div>
 
       <ul className="grid grid-cols-2 small:grid-cols-3 medium:grid-cols-4 gap-x-6 gap-y-8">
-        {productPreviews.map((productPreview) => (
+        {productPreviews.map((productPreview, index) => (
           <li key={productPreview.id}>
-            <ProductPreview region={region} productPreview={productPreview} />
+            <ProductPreviewWrapper index={index}>
+              <ProductPreview region={region} productPreview={productPreview} />
+            </ProductPreviewWrapper>
           </li>
         ))}
       </ul>

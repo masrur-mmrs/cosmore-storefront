@@ -28,6 +28,10 @@ const nextConfig = withStoreConfig({
                 protocol: "https",
                 hostname: "cdn.icon-icons.com",
             },
+            {
+                protocol: "https",
+                hostname: "cosmore-server.s3.ca-central-1.amazonaws.com",
+            },
         ],
     },
 })

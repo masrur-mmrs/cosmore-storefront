@@ -1,5 +1,6 @@
 "use client"
 
+import React from "react"
 import { Popover, Transition } from "@headlessui/react"
 import { ArrowRightMini, XMark, BarsThree } from "@medusajs/icons"
 import { Region } from "@medusajs/medusa"
@@ -11,8 +12,8 @@ import CountrySelect from "../country-select"
 
 const SideMenuItems = {
   Home: "/",
-  Store: "/store",
-  Search: "/search",
+  // Store: "/store",
+  // Search: "/search",
   Account: "/account",
   Cart: "/cart",
 }
