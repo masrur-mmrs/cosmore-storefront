@@ -1,5 +1,5 @@
 import React from "react"
-import { CreditCard } from "@medusajs/icons"
+import { CreditCard, Cash } from "@medusajs/icons"
 import BkashIcon from "lib/icons/BkashIcon"
 
 import Ideal from "@modules/common/icons/ideal"
@@ -30,6 +30,10 @@ export const paymentInfoMap: Record<
   manual: {
     title: "Bkash Payment",
     icon: <BkashIcon />,
+  },
+  "cash-on-delivery": {
+    title: "Cash on Delivery",
+    icon: <Cash />,
   },
   // Add more payment providers here
 }
