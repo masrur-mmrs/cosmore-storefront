@@ -8,7 +8,7 @@ const Lottie = dynamic(() => import('lottie-react'), { ssr: false });
 import { Transition } from "@headlessui/react"
 
 import Cosmore from '../../../../app/cosmore.json'
-import HeroImage from '../../../../app/HeroImage.png'
+import HeroImage from '../../../../app/HeroImage.PNG'
 
 const Hero = () => {
   const [visible, setVisible] = useState(false);
