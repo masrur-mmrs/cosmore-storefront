@@ -1,11 +1,12 @@
 'use client'
+import dynamic from 'next/dynamic';
 import React, { useContext, useEffect, useState } from 'react';
 import Image from 'next/image';
 import { useDrag } from '@use-gesture/react';
 import { SwipeUpContext } from '../../../../lib/context/swipe-up-context';
 import { Transition } from '@headlessui/react';
 import { clx } from '@medusajs/ui';
-import Lottie from 'lottie-react';
+const Lottie = dynamic(() => import('lottie-react'), { ssr: false });
 import Cosmore from '../../../../app/cosmore.json'
 import DownArrow from '../../../../app/arrow-down-3101.png'
 

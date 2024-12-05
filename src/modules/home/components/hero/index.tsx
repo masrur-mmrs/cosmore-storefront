@@ -1,9 +1,10 @@
 "use client"
 import Image from "next/image"
+import dynamic from "next/dynamic"
 import { useEffect, useState } from "react"
 import { clx } from "@medusajs/ui"
 import DownArrow from "../../../../app/arrow-down-3101.png"
-import Lottie from "lottie-react"
+const Lottie = dynamic(() => import('lottie-react'), { ssr: false });
 import { Transition } from "@headlessui/react"
 
 import Cosmore from '../../../../app/cosmore.json'
@@ -38,7 +39,7 @@ const Hero = () => {
         height={1000}
         width={1000}
         priority
-        className="absolute z-20 md:bottom-0 min-[300px]:-bottom-72"
+        className="absolute z-20 md:bottom-0 min-[300px]:-bottom-72 hidden sm:block"
         />
           <div className={clx("bg-primary-color w-[25vw] h-[25vw] right-10 top-10 absolute rounded-full z-10 transition ease-in duration-300 transform-gpu", (visible)?"scale-100":"scale-0")}></div>
           <div className={clx("bg-primary-color w-[20vw] h-[20vw] left-24 bottom-5 absolute rounded-full z-10 transition ease-in duration-300 delay-100 transform-gpu", (visible)?"scale-100":"scale-0")}></div>
