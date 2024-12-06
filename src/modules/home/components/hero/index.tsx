@@ -34,7 +34,7 @@ const Hero = () => {
       {/* Right Div */}
       <div className="lg:w-1/2 sm:w-0 relative">
       <Image
-        src={"https://cosmore-server.s3.ca-central-1.amazonaws.com/HeroImage.png"}
+        src={"https://cosmore-server.s3.ca-central-1.amazonaws.com/HeroImage1.PNG"}
         alt="Hero Image"
         height={1000}
         width={1000}
