@@ -31,10 +31,10 @@ export const paymentInfoMap: Record<
     title: "Bkash Payment",
     icon: <BkashIcon />,
   },
-  "cash-on-delivery": {
-    title: "Cash on Delivery",
-    icon: <Cash />,
-  },
+  // "cash-on-delivery": {
+  //   title: "Cash on Delivery",
+  //   icon: <Cash />,
+  // },
   // Add more payment providers here
 }
 
