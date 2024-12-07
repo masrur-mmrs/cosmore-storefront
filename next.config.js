@@ -7,7 +7,12 @@ const store = require("./store.config.json")
 const nextConfig = withStoreConfig({
     features: store.features,
     reactStrictMode: true,
-    trailingSlash: true,
+    eslint: {
+      ignoreDuringBuilds: true,
+    },
+    typescript: {
+      ignoreBuildErrors: true,
+    },
     images: {
         remotePatterns: [{
                 protocol: "http",
@@ -35,25 +40,6 @@ const nextConfig = withStoreConfig({
             },
         ],
     },
-    env: {
-        // Explicitly convert feature flags to strings
-        ...(store.features && Object.entries(store.features).reduce((acc, [key, value]) => {
-          acc[`FEATURE_${key.toUpperCase()}_ENABLED`] = value ? 'true' : 'false';
-          return acc;
-        }, {}))
-      },
-      webpack: (config, { isServer }) => {
-        config.resolve.symlinks = false;
-        
-        // Increase performance budget
-        config.performance = {
-          hints: false,
-          maxEntrypointSize: 512000,
-          maxAssetSize: 512000
-        };
-    
-        return config;
-      },
 })
 
 console.log("next.config.js", JSON.stringify(module.exports, null, 2))

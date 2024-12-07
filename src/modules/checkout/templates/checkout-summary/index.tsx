@@ -1,27 +1,17 @@
 import { Heading } from "@medusajs/ui"
-
 import ItemsPreviewTemplate from "@modules/cart/templates/preview"
 import DiscountCode from "@modules/checkout/components/discount-code"
 import CartTotals from "@modules/common/components/cart-totals"
 import Divider from "@modules/common/components/divider"
-import { cookies } from "next/headers"
-import { getCart } from "@lib/data"
+import { Cart } from "@medusajs/medusa"
 
-const CheckoutSummary = async () => {
-  const cartId = cookies().get("_medusa_cart_id")?.value
+interface CheckoutSummaryProps {
+  cart: Cart
+}
 
-  if (!cartId) {
-    return null
-  }
-
-  const cart = await getCart(cartId).then((cart) => cart)
-
-  if (!cart) {
-    return null
-  }
-
+const CheckoutSummary = ({ cart: initialCart }: CheckoutSummaryProps) => {
   return (
-    <div className="sticky top-0 flex flex-col-reverse small:flex-col gap-y-8 py-8 small:py-0 ">
+    <div className="sticky top-0 flex flex-col-reverse small:flex-col gap-y-8 py-8 small:py-0">
       <div className="w-full bg-white flex flex-col">
         <Divider className="my-6 small:hidden" />
         <Heading
@@ -31,10 +21,13 @@ const CheckoutSummary = async () => {
           In your Cart
         </Heading>
         <Divider className="my-6" />
-        <CartTotals data={cart} />
-        <ItemsPreviewTemplate region={cart?.region} items={cart?.items} />
+        <CartTotals data={initialCart} />
+        <ItemsPreviewTemplate 
+          region={initialCart?.region} 
+          items={initialCart?.items} 
+        />
         <div className="my-6">
-          <DiscountCode cart={cart} />
+          <DiscountCode cart={initialCart} />
         </div>
       </div>
     </div>
