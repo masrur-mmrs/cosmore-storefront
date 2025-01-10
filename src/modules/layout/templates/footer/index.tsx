@@ -3,6 +3,15 @@ import { Text, clx } from "@medusajs/ui"
 import { getCategoriesList, getCollectionsList } from "@lib/data"
 
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
+import { Key, ReactElement, JSXElementConstructor, ReactNode, ReactPortal } from "react"
+
+declare interface ProductCategory {
+  id: string
+  name: string
+  handle: string
+  parent_category: boolean
+  category_children: ProductCategory[]
+}
 
 export default async function Footer() {
   const { collections } = await getCollectionsList(0, 6)
@@ -27,7 +36,7 @@ export default async function Footer() {
                   Categories
                 </span>
                 <ul className="grid grid-cols-1 gap-2" data-testid="footer-categories">
-                  {product_categories?.slice(0, 6).map((c) => {
+                  {product_categories?.slice(0, 6).map((c: ProductCategory) => {
                     if (c.parent_category) {
                       return
                     }
@@ -89,7 +98,7 @@ export default async function Footer() {
                     }
                   )}
                 >
-                  {collections?.slice(0, 6).map((c) => (
+                  {collections?.slice(0, 6).map((c: { id: Key | null | undefined; handle: any; title: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | null | undefined }) => (
                     <li key={c.id}>
                       <LocalizedClientLink
                         className="hover:text-ui-fg-base"
@@ -102,41 +111,6 @@ export default async function Footer() {
                 </ul>
               </div>
             )}
-            {/* <div className="flex flex-col gap-y-2">
-              <span className="txt-small-plus txt-ui-fg-base">Medusa</span>
-              <ul className="grid grid-cols-1 gap-y-2 text-ui-fg-subtle txt-small">
-                <li>
-                  <a
-                    href="https://github.com/medusajs"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="hover:text-ui-fg-base"
-                  >
-                    GitHub
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://docs.medusajs.com"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="hover:text-ui-fg-base"
-                  >
-                    Documentation
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://github.com/medusajs/nextjs-starter-medusa"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="hover:text-ui-fg-base"
-                  >
-                    Source code
-                  </a>
-                </li>
-              </ul>
-            </div> */}
           </div>
         </div>
         <div className="flex w-full mb-16 justify-between text-ui-fg-muted">

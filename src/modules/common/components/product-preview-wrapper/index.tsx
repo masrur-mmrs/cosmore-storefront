@@ -1,5 +1,5 @@
 'use client'
-import React from 'react';
+import React, { RefObject } from 'react';
 import { useInView, motion } from "framer-motion"
 import { useRef } from "react"
 
@@ -11,7 +11,8 @@ interface ProductPreviewWrapperProps {
 
 const ProductPreviewWrapper: React.FC<ProductPreviewWrapperProps> = ({children, index}) => {
   const ref = useRef(null)
-  const isInView = useInView(ref)
+  //@ts-ignore
+  const isInView = useInView(ref, {once: true})
 
   const variants = {
     show: {
@@ -30,10 +31,11 @@ const ProductPreviewWrapper: React.FC<ProductPreviewWrapperProps> = ({children, 
   };
 
     return (
+        //@ts-ignore
         <motion.div 
         variants={variants}
         animate={isInView ? "show" : "hide"}
-        transition={{ ease: "easeInOut", duration: 0.5 }}
+        // transition={{ ease: "easeInOut", duration: 0.5 }}
         ref={ref}
         > 
         {children}

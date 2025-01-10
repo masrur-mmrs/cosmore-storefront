@@ -556,7 +556,7 @@ export const getHomepageProducts = cache(async function getHomepageProducts({
     collectionHandles = collections.map((collection) => collection.handle)
   }
 
-  for (const handle of collectionHandles) {
+  for (const handle of collectionHandles!) {
     const products = await getProductsByCollectionHandle({
       handle,
       currencyCode,
@@ -737,7 +737,7 @@ export const getProductsByCategoryHandle = cache(async function ({
   nextPage: number | null
 }> {
   const { id } = await getCategoryByHandle([handle]).then(
-    (res) => res.product_categories[0]
+    (res: { product_categories: any[] }) => res.product_categories[0]
   )
 
   const { response, nextPage } = await getProductsList({
