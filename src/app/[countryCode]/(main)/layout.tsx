@@ -19,7 +19,8 @@ export default async function PageLayout(props: { children: React.ReactNode }) {
       <div className="relative">
         <div className=""><WelcomePage/></div>
         <div className="z-10">
-            <Nav />{props.children}<Footer/>
+        {props.children}
+            {/* <Nav />{props.children}<Footer/> */}
         </div>
       </div>
     </SwipeUpProvider>

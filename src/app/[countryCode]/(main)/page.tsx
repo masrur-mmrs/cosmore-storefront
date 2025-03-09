@@ -10,6 +10,7 @@ import { cache } from "react"
 import { OpenGraph } from "next/dist/lib/metadata/types/opengraph-types"
 
 import CategoryRail from "@modules/home/components/featured-products/category-rail"
+import Construction from "@modules/home/construction.tsx"
 
 const openGraph: OpenGraph = {
   type: "website",
@@ -81,13 +82,14 @@ export default async function Home({
 
   return (
     <>
-      <Hero />
+      <Construction/>
+      {/* <Hero />
       <div className="py-12">
         <CategoryRail product_categories={product_categories} countryCode={countryCode} />
-        {/* <ul className="flex flex-col gap-x-6">
+        <ul className="flex flex-col gap-x-6">
           <FeaturedProducts collections={collections!} region={region!} />
-        </ul> */}
-      </div>
+        </ul>
+      </div> */}
     </>
   )
 }

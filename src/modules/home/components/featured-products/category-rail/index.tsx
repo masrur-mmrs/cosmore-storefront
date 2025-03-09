@@ -6,6 +6,8 @@ import ProductPreviewWrapper from "@modules/common/components/product-preview-wr
 import ProductPreview from "@modules/products/components/product-preview";
 import InteractiveLink from "@modules/common/components/interactive-link";
 
+//TODO: refactor code and break them into individual components
+
 const Products = async ({handle, countryCode}: {handle: string, countryCode: string}) => {
   const {response} = await getProductsByCategoryHandle({handle, countryCode})
   const region = await getRegion(countryCode)
